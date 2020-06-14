@@ -5,6 +5,8 @@ import { Dropdown } from "semantic-ui-react";
 import { CountryFields, fetchCountries } from "../../actions";
 import { StoreState } from "../../reducers";
 
+import Spinner from "../Spinner/Spinner";
+
 interface AppProps {
   countries: CountryFields[];
   fetchCountries: Function;
@@ -36,7 +38,11 @@ export class _Countries extends React.Component<AppProps> {
         />
       );
     } else {
-      return <div>Loading...</div>;
+      return (
+        <div>
+          <Spinner />
+        </div>
+      );
     }
   };
 

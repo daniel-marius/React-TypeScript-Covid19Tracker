@@ -62,7 +62,7 @@ export class CardConfirmed extends React.Component<AppProps> {
       >
         <div className="content">
           {this.renderHeader(
-            `Number of confirmed cases of Covid-19 ${countryName}`
+            `Number of confirmed cases of COVID-19 ${countryName}`
           )}
         </div>
         <div className="content">

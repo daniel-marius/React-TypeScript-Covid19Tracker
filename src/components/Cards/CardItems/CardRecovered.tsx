@@ -61,7 +61,7 @@ export class CardRecovered extends React.Component<AppProps> {
       >
         <div className="content">
           {this.renderHeader(
-            `Number of recoveries from Covid-19 ${countryName}`
+            `Number of recoveries from COVID-19 ${countryName}`
           )}
         </div>
         <div className="content">

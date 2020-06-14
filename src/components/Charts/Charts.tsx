@@ -5,6 +5,8 @@ import Chart from "react-apexcharts";
 import { DailyData, fetchDailyData } from "../../actions";
 import { StoreState } from "../../reducers";
 
+import Spinner from "../Spinner/Spinner";
+
 interface AppProps {
   dailyData: DailyData[];
   fetchDailyData: Function;
@@ -134,7 +136,11 @@ export class _Charts extends React.Component<AppProps> {
         </div>
       );
     } else {
-      return <div>No Country Selected...</div>;
+      return (
+        <div>
+          <Spinner />
+        </div>
+      );
     }
   };
 
@@ -166,11 +172,11 @@ export class _Charts extends React.Component<AppProps> {
 
     const series = [
       {
-        name: "Covid-19 Confirmed Cases",
+        name: "COVID-19 Global Confirmed Cases",
         data: confirmedArray
       },
       {
-        name: "Covid-19 Deaths",
+        name: "COVID-19 Global Deaths",
         data: deathsArray
       }
     ];
@@ -199,7 +205,7 @@ export class _Charts extends React.Component<AppProps> {
         curve: "smooth"
       },
       title: {
-        text: "Covid-19 Confirmed Cases & Deaths",
+        text: "COVID-19 Global Confirmed Cases & Deaths",
         align: "left"
       },
       grid: {
@@ -220,7 +226,7 @@ export class _Charts extends React.Component<AppProps> {
       },
       yaxis: {
         title: {
-          text: "Number of Covid-19 Confirmed Cases"
+          text: "COVID-19 Global Confirmed Cases"
         },
         min: 1,
         max: confirmedArray[confirmedArray.length - 1]
@@ -241,7 +247,11 @@ export class _Charts extends React.Component<AppProps> {
         </div>
       );
     } else {
-      return <div>Loading...</div>;
+      return (
+        <div>
+          <Spinner />
+        </div>
+      );
     }
   };
 
