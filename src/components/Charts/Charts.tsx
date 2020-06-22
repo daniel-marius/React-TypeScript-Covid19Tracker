@@ -17,6 +17,127 @@ interface AppProps {
   countryName: String;
 }
 
+interface BarChartOptions {
+  chart: {
+    type: String;
+    height: Number;
+  };
+  plotOptions: {
+    bar: {
+      barHeight: String;
+      distributed: Boolean;
+      horizontal: Boolean;
+      dataLabels: {
+        position: String;
+      }
+    }
+  };
+  colors: String[];
+  dataLabels: {
+    enabled: Boolean;
+    textAnchor: String;
+    style: {
+      colors: String[];
+    };
+    formatter: Function;
+    offsetX: Number;
+    dropShadow: {
+      enabled: Boolean;
+    };
+  };
+  stroke: {
+    width: Number;
+    colors: String[];
+  };
+  xaxis: {
+    categories: String[];
+  };
+  yaxis: {
+    labels: {
+      show: Boolean;
+    }
+  };
+  title: {
+    text: String;
+    align: String;
+    floating: Boolean;
+  };
+  subtitle: {
+    text: String;
+    align: String;
+  };
+  tooltip: {
+    theme: String;
+    x: {
+      show: Boolean;
+    };
+    y: {
+      title: {
+        formatter: Function;
+      }
+    }
+  }
+}
+
+interface LineChartOptions {
+  chart: {
+    height: Number;
+    type: String;
+    dropShadow: {
+      enabled: Boolean;
+      color: String;
+      top: Number;
+      left: Number;
+      blur: Number;
+      opacity: Number;
+    };
+    toolbar: {
+      show: Boolean;
+    };
+  };
+  colors: String[];
+  dataLabels: {
+    enabled: Boolean;
+  };
+  stroke: {
+    curve: String;
+  };
+  title: {
+    text: String;
+    align: String;
+  };
+  grid: {
+    borderColor: String;
+    row: {
+      colors: String[]; // takes an array which will be repeated on columns
+      opacity: Number;
+    };
+  };
+  markers: {
+    size: Number;
+  };
+  xaxis: {
+    categories: String[];
+    title: {
+      text: String;
+    };
+  };
+  yaxis: {
+    title: {
+      text: String;
+    };
+    min: Number;
+    max: Number;
+  };
+  legend: {
+    position: String;
+    horizontalAlign: String;
+    floating: Boolean;
+    offsetY: Number;
+    offsetX: Number;
+  };
+}
+
 export class _Charts extends React.Component<AppProps> {
   componentDidMount() {
     this.props.fetchDailyData();
@@ -57,13 +178,13 @@ export class _Charts extends React.Component<AppProps> {
       }
     }
 
-    const series = [
+    const series: object[] = [
       {
         data: [confirmedValue, recoveredValue, deathsValue, activeValue]
       }
     ];
 
-    const options = {
+    const options: BarChartOptions = {
       chart: {
         type: "bar",
         height: 380
@@ -170,7 +291,7 @@ export class _Charts extends React.Component<AppProps> {
       });
     }
 
-    const series = [
+    const series: object[] = [
       {
         name: "COVID-19 Global Confirmed Cases",
         data: confirmedArray
@@ -181,7 +302,7 @@ export class _Charts extends React.Component<AppProps> {
       }
     ];
 
-    const options = {
+    const options: LineChartOptions = {
       chart: {
         height: 350,
         type: "line",
